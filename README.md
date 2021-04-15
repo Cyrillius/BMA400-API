@@ -25,3 +25,4 @@ For more information, please refer to:
 - [Community support page](https://community.bosch-sensortec.com)
 
 ------------
+#### Copyright (C) 2019 Bosch Sensortec GmbH
