@@ -832,7 +832,7 @@ int8_t bma400_set_power_mode(uint8_t power_mode, struct bma400_dev *dev)
 int8_t bma400_get_power_mode(uint8_t *power_mode, struct bma400_dev *dev)
 {
     int8_t rslt;
-    uint8_t reg_data;
+    uint8_t reg_data = 0;
 
     /* Check for null pointer in the device structure*/
     rslt = null_ptr_check(dev);
@@ -1071,7 +1071,7 @@ int8_t bma400_get_device_conf(struct bma400_device_conf *conf, uint8_t n_sett, s
 int8_t bma400_get_interrupt_status(uint16_t *int_status, struct bma400_dev *dev)
 {
     int8_t rslt;
-    uint8_t reg_data[3];
+    uint8_t reg_data[3] = { 0, 0, 0 };
 
     /* Check for null pointer in the device structure*/
     rslt = null_ptr_check(dev);
@@ -1150,7 +1150,7 @@ int8_t bma400_get_steps_counted(uint32_t *step_count, uint8_t *activity_data, st
 int8_t bma400_get_temperature_data(int16_t *temperature_data, struct bma400_dev *dev)
 {
     int8_t rslt;
-    uint8_t reg_data;
+    uint8_t reg_data = 0;
 
     /* Check for null pointer in the device structure*/
     rslt = null_ptr_check(dev);
@@ -1175,7 +1175,7 @@ int8_t bma400_get_interrupts_enabled(struct bma400_int_enable *int_select, uint8
 {
     int8_t rslt;
     uint8_t idx = 0;
-    uint8_t reg_data[2];
+    uint8_t reg_data[2] = { 0, 0 };
     uint8_t wkup_int;
 
     /* Check for null pointer in the device structure */
@@ -1255,7 +1255,7 @@ int8_t bma400_enable_interrupt(const struct bma400_int_enable *int_select, uint8
 {
     int8_t rslt;
     uint8_t conf, idx = 0;
-    uint8_t reg_data[2];
+    uint8_t reg_data[2] = { 0, 0 };
 
     /* Check for null pointer in the device structure */
     rslt = null_ptr_check(dev);
@@ -1821,7 +1821,7 @@ static int8_t get_autowakeup_timeout(struct bma400_auto_wakeup_conf *wakeup_conf
 static int8_t set_auto_wakeup(uint8_t conf, struct bma400_dev *dev)
 {
     int8_t rslt;
-    uint8_t reg_data;
+    uint8_t reg_data = 0;
 
     rslt = bma400_get_regs(BMA400_REG_AUTOWAKEUP_1, &reg_data, 1, dev);
     if (rslt == BMA400_OK)
@@ -1903,7 +1903,7 @@ static int8_t get_autowakeup_interrupt(struct bma400_wakeup_conf *wakeup_conf, s
 static int8_t set_auto_low_power(const struct bma400_auto_lp_conf *auto_lp_conf, struct bma400_dev *dev)
 {
     int8_t rslt;
-    uint8_t reg_data;
+    uint8_t reg_data = 0;
     uint8_t timeout_msb;
     uint8_t timeout_lsb;
 
@@ -1995,7 +1995,7 @@ static int8_t set_tap_conf(const struct bma400_tap_conf *tap_set, struct bma400_
 static int8_t get_tap_conf(struct bma400_tap_conf *tap_set, struct bma400_dev *dev)
 {
     int8_t rslt;
-    uint8_t reg_data[2];
+    uint8_t reg_data[2] = { 0, 0 };
 
     rslt = bma400_get_regs(BMA400_REG_TAP_CONFIG, reg_data, 2, dev);
     if (rslt == BMA400_OK)
@@ -2850,7 +2850,7 @@ static void get_int_pin_map(const uint8_t *data_array, uint8_t int_enable, enum 
 static int8_t set_int_pin_conf(struct bma400_int_pin_conf int_conf, struct bma400_dev *dev)
 {
     int8_t rslt;
-    uint8_t reg_data;
+    uint8_t reg_data = 0;
 
     rslt = bma400_get_regs(BMA400_REG_INT_12_IO_CTRL, &reg_data, 1, dev);
     if (rslt == BMA400_OK)
@@ -2877,7 +2877,7 @@ static int8_t set_int_pin_conf(struct bma400_int_pin_conf int_conf, struct bma40
 static int8_t get_int_pin_conf(struct bma400_int_pin_conf *int_conf, struct bma400_dev *dev)
 {
     int8_t rslt;
-    uint8_t reg_data;
+    uint8_t reg_data = 0;
 
     rslt = bma400_get_regs(BMA400_REG_INT_12_IO_CTRL, &reg_data, 1, dev);
     if (rslt == BMA400_OK)
@@ -2997,7 +2997,7 @@ static int8_t get_fifo_length(uint16_t *fifo_byte_cnt, struct bma400_dev *dev)
 static int8_t read_fifo(struct bma400_fifo_data *fifo, struct bma400_dev *dev)
 {
     int8_t rslt;
-    uint8_t reg_data;
+    uint8_t reg_data = 0;
     uint8_t fifo_addr = BMA400_REG_FIFO_DATA;
 
     if (dev->intf == BMA400_SPI_INTF)
